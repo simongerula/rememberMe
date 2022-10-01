@@ -1,6 +1,6 @@
 const request = require('request')
 
-let msgObject = {}
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
 function createMemory(sender_psid, txt_memory, remember_at) {
     
