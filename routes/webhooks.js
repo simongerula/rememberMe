@@ -6,9 +6,14 @@ router.get('/webhook', (req,res) =>{
 
     const mode = req.query['hub.mode']
     const token = req.query['hub.verify_token']
+    const challenge = req.query['hub.challenge']
     
     if (mode === 'subscribe' && token === VERIFY_TOKEN){
-        res.send("Welcome to Recuerdame API")
+        console.log('Webhook facebook verificado')
+        res.send(challenge)        
+    }
+    else {
+        res.statusCode = 401
     }
 })
 
