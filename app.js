@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 
 const app = express().use(bodyParser.json());
 
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
+
 // Settings
 app.set('port', process.env.PORT || 3000)
 

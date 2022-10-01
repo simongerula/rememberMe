@@ -1,6 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
+const axios = require('axios')
+
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
+
+// Setup for Facebook integration
 router.get('/webhook', (req,res) =>{
     const VERIFY_TOKEN = 'RememberMe2334255NZ'
 
@@ -17,6 +22,7 @@ router.get('/webhook', (req,res) =>{
     }
 })
 
+// Reading messages
 router.post('/webhook', (req,res) => {
     const body = req.body
     if(body.object === 'page'){
@@ -24,13 +30,29 @@ router.post('/webhook', (req,res) => {
             const webhookEvent = entry.messaging[0]
 
             const msgTxt = webhookEvent.message.text
+            const sender_psid = webhookEvent.sender.id
 
             // If it contains remember , rememberme or remember me
             if (/remember/i.test(msgTxt) || /rememberme/i.test(msgTxt) || /remember me/i.test(msgTxt)){
                 console.log('Memory detected')
+
+                // responder mensaje
+                const requestBody = {
+                    'recipient': {
+                        'id': sender_psid
+                    },
+                    'message': 'OK'
+                }
+                let config = {
+                    method: 'POST',
+                    url: 'https://graph.facebook.com/v2.6/me/messages/',
+                    qs: {'access_token': PAGE_ACCESS_TOKEN},
+                    json: requestBody
+                  };
+                axios(config)
             } 
             else {
-                console.log("Sorry, I couldn't")
+                console.log("I'm sorry I couldn't understand your message")
             }
 
         })
