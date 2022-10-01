@@ -8,6 +8,7 @@ app.set('port', process.env.PORT || 3000)
 
 // Routes
 app.use(require('./routes/recuerdos'))
+app.use(require('./routes/webhooks'))
 
 // Starting the server
 app.listen(app.get('port'), ()=>{
