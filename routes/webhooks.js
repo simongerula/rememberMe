@@ -66,8 +66,27 @@ router.post('/webhook', (req,res) => {
                     querys.createMemory(sender_psid, txt_memory, remember_at)
                 }
 
-                // Date detailed (DD/MM/YYYY)
+                // Date detailed (DD/MM/YY)
+                if(!/:/.test(remember_at) && /\//.test(remember_at) && !/tomorrow/.test(remember_at) && !/monday/.test(remember_at) && !/tuesday/.test(remember_at) && !/wendsday/.test(remember_at) && !/thursday/.test(remember_at) && !/friday/.test(remember_at) && !/saturday/.test(remember_at) && !/sunday/.test(remember_at) && !/minute/.test(remember_at)){
+                    const remember_at_date = remember_at.slice(remember_at.indexOf('/')-2, remember_at.indexOf('/')+6)
+                    const remember_at_year = remember_at_date.slice(-2)
+                    const remember_at_month = remember_at_date.slice(-5,-3)
+                    const remember_at_day = remember_at_date.slice(0,2)
 
+                    if(parseInt(remember_at_month) > 12){
+                        
+                    }
+                    else if(parseInt(remember_at_day) > 31){
+
+                    }
+                    else if(parseInt(remember_at_year) > 99){
+
+                    }
+                    else {
+                        remember_at = "20" + remember_at_year + "-" + remember_at_month + "-" + remember_at_day + " " + "09:00:00"
+                        querys.createMemory(sender_psid, txt_memory, remember_at)
+                    }
+                }
 
             } 
             else {
