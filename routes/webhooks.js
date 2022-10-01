@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/webhooks', (req,res) =>{
+router.get('/webhook', (req,res) =>{
     const VERIFY_TOKEN = 'RememberMe2334255NZ'
 
     const mode = req.query['hub.mode']
