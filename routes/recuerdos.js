@@ -124,4 +124,8 @@ router.delete('/recuerdos/:id', (req,res) => {
 
 })
 
+router.post('/memories', (req, res) => {
+    res.send('hi')
+})
+
 module.exports = router
