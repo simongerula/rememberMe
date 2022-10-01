@@ -43,13 +43,13 @@ router.post('/webhook', (req,res) => {
                 let remember_at_index
 
                 // Find the position of text to memorize
-                if(/remember me/i.test(msg.body)){
+                if(/remember me/i.test(msgTxt)){
                     remember_at_index = msgTxt.indexOf('remember me')
                 }
-                else if (/remember/i.test(msg.body)){
+                else if (/remember/i.test(msgTxt)){
                     remember_at_index = msgTxt.indexOf('remember')
                 }
-                else if (/rememberme/i.test(msg.body)){
+                else if (/rememberme/i.test(msgTxt)){
                     remember_at_index = msgTxt.indexOf('rememberme')
                 }
 
