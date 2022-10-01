@@ -11,5 +11,5 @@ app.use(require('./routes/recuerdos'))
 
 // Starting the server
 app.listen(app.get('port'), ()=>{
-    console.log('[Log 1/2]Server runing on port ', app.get('port'))
+    console.log('[Log 1/2] Server runing on port ', app.get('port'))
 })
