@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const axios = require('axios')
+const request = require('request')
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
@@ -37,11 +38,13 @@ router.post('/webhook', (req,res) => {
                 console.log('Memory detected')
 
                 // responder mensaje
-                const requestBody = {
+                /*const requestBody = {
                     'recipient': {
                         'id': sender_psid
                     },
-                    'message': 'OK'
+                    'messaging_type': RESPONSE,
+                    'message': {'text':'hello,world'},
+                    'access_token': PAGE_ACCESS_TOKEN
                 }
                 let config = {
                     method: 'POST',
@@ -52,7 +55,29 @@ router.post('/webhook', (req,res) => {
                 axios(config)
                 .catch(function (error) {
                     console.log(error)
+                })*/
+
+                const requestBody = {
+                    'recipient': {
+                        'id': sender_psid
+                    },
+                    'message': {'text': 'OK'},
+                    'messaging_type': 'MESSAGE_TAG',
+                }
+                request({
+                    'url': 'https://graph.facebook.com/v15.0/me/messages',
+                    'qs': {'access_token': PAGE_ACCESS_TOKEN},
+                    'method': 'POST',
+                    'json': requestBody
+                }, (err, res, body) => {
+                    if(!err){
+                        console.log('Respuesta enviada')
+                    } else {
+                        console.error('No se pudo enviar el mensaje')
+                    }
                 })
+
+
             } 
             else {
                 console.log("I'm sorry I couldn't understand your message")
