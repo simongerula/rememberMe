@@ -18,7 +18,8 @@ router.get('/webhook', (req,res) =>{
 })
 
 router.post('/webhook', (req,res) => {
-    if(req.body.object === 'page'){
+    const body = req.body
+    if(body.object === 'page'){
         body.entry.forEach(entry => {
             const webhookEvent = entry.messaging[0]
             console.log(webhookEvent)
