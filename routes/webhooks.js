@@ -23,7 +23,7 @@ router.post('webhook', (req,res) => {
             const webhookEvent = entry.messaging[0]
             console.log(webhookEvent)
         })
-        res.send('Evento Recibido')
+        console.log('Evento Recibido')
     }
 })
 
