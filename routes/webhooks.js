@@ -62,7 +62,7 @@ router.post('/webhook', (req,res) => {
                         'id': sender_psid
                     },
                     'message': {'text': 'OK'},
-                    'messaging_type': 'MESSAGE_TAG',
+                    'messaging_type': 'RESPONSE',
                 }
                 request({
                     'url': 'https://graph.facebook.com/v15.0/me/messages',
