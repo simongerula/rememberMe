@@ -58,7 +58,7 @@ router.post('/webhook', (req,res) => {
                 txt_memory = msgTxt.slice(0,remember_at_index)
                 remember_at = msgTxt.slice(remember_at_index+8) // repasar
 
-                // Hour detailed
+                // Hour detailed (HH:MM)
                 if(/:/.test(remember_at) && !/\//.test(remember_at) && !/tomorrow/.test(remember_at) && !/monday/.test(remember_at) && !/tuesday/.test(remember_at) && !/wendsday/.test(remember_at) && !/thursday/.test(remember_at) && !/friday/.test(remember_at) && !/saturday/.test(remember_at) && !/sunday/.test(remember_at) && !/minute/.test(remember_at)){
                     const remember_at_hour = remember_at.slice(remember_at.indexOf(':')-2, remember_at.indexOf(':')+3)
                     remember_at = date_today.getFullYear() + "-" + (date_today.getMonth()+1) + "-" + date_today.getDate() + " " + remember_at_hour + ":00"
@@ -66,28 +66,7 @@ router.post('/webhook', (req,res) => {
                     querys.createMemory(sender_psid, txt_memory, remember_at)
                 }
 
-
-
-
-                const requestBody = {
-                    'recipient': {
-                        'id': sender_psid
-                    },
-                    'message': {'text': 'OK'},
-                    'messaging_type': 'RESPONSE',
-                }
-                request({
-                    'url': 'https://graph.facebook.com/v15.0/me/messages',
-                    'qs': {'access_token': PAGE_ACCESS_TOKEN},
-                    'method': 'POST',
-                    'json': requestBody
-                }, (err, res, body) => {
-                    if(!err){
-                        console.log('Respuesta enviada')
-                    } else {
-                        console.error('No se pudo enviar el mensaje')
-                    }
-                })
+                // Date detailed (DD/MM/YYYY)
 
 
             } 
