@@ -22,7 +22,18 @@ router.post('/webhook', (req,res) => {
     if(body.object === 'page'){
         body.entry.forEach(entry => {
             const webhookEvent = entry.messaging[0]
-            console.log(webhookEvent)
+
+            const msgTxt = webhookEvent.message.text
+
+
+            // If it contains remember , rememberme or remember me
+            if (/remember/i.test(msgTxt) || /rememberme/i.test(msgTxt) || /remember me/i.test(msgTxt)){
+                console.log('Memory detected')
+            } 
+            else {
+                console.log("Sorry, I couldn't")
+            }
+
         })
         console.log('Evento Recibido')
     }
