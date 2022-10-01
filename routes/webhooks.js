@@ -45,11 +45,14 @@ router.post('/webhook', (req,res) => {
                 }
                 let config = {
                     method: 'POST',
-                    url: 'https://graph.facebook.com/v2.6/me/messages/',
+                    url: 'https://graph.facebook.com/v15.0/me/messages',
                     qs: {'access_token': PAGE_ACCESS_TOKEN},
                     json: requestBody
                   };
                 axios(config)
+                .catch(function (error) {
+                    console.log(error)
+                })
             } 
             else {
                 console.log("I'm sorry I couldn't understand your message")
