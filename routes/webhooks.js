@@ -25,7 +25,6 @@ router.post('/webhook', (req,res) => {
 
             const msgTxt = webhookEvent.message.text
 
-
             // If it contains remember , rememberme or remember me
             if (/remember/i.test(msgTxt) || /rememberme/i.test(msgTxt) || /remember me/i.test(msgTxt)){
                 console.log('Memory detected')
@@ -35,6 +34,7 @@ router.post('/webhook', (req,res) => {
             }
 
         })
+        res.send('ok')
         console.log('Evento Recibido')
     }
 })
