@@ -69,5 +69,5 @@ function sendMessageUnknown(sender_psid) {
 
 module.exports = {
     'createMemory': createMemory,
-    'sendMessage': sendMessageUnknown
+    'sendMessageUnknown': sendMessageUnknown
 }
