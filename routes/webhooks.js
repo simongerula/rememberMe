@@ -190,7 +190,7 @@ router.post('/webhook', (req,res) => {
                     querys.createMemory(sender_psid, txt_memory, remember_at)
                 }
             else {
-                sendMessageUnknown(sender_psid, )
+                sendMessageUnknown(sender_psid)
             }
         }
         })
