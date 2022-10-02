@@ -191,7 +191,7 @@ router.post('/webhook', (req,res) => {
                 }
             }
             else {
-                sendMessageUnknown(sender_psid)
+                querys.sendMessageUnknown(sender_psid)
             }
         })
         res.send('ok')
