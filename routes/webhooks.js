@@ -189,10 +189,10 @@ router.post('/webhook', (req,res) => {
                     remember_at = remember_at_year + "-" + remember_at_month + "-" + remember_at_day + " " + remember_at_hour + ":00"
                     querys.createMemory(sender_psid, txt_memory, remember_at)
                 }
+            }
             else {
                 sendMessageUnknown(sender_psid)
             }
-        }
         })
         res.send('ok')
         console.log('Evento Recibido')
