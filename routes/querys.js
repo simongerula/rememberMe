@@ -18,7 +18,7 @@ function createMemory(sender_psid, txt_memory, remember_at) {
         'json': requestBody
     }, (err, res, body) => {
         if(!err){
-            sendMessage(sender_psid, txt_memory, remember_at)
+            sendMessageConfirmation(sender_psid, txt_memory, remember_at)
         } else {
             console.error('fallo createMemory')
         }
@@ -28,12 +28,12 @@ function createMemory(sender_psid, txt_memory, remember_at) {
 
 }
 
-function sendMessage(sender_psid, txt_memory, remember_at) {
+function sendMessageConfirmation(sender_psid, txt_memory, remember_at) {
     const requestBody = {
         'recipient': {
             'id': sender_psid
         },
-        'message': {'text': `Got it! I'll remember you: ${txt_memory} , ${remember_at} `},
+        'message': {'text': `Got it! I'll remember you: ${txt_memory} , 🗓 ${remember_at} `},
         'messaging_type': 'RESPONSE',
     }
     request({
@@ -50,6 +50,24 @@ function sendMessage(sender_psid, txt_memory, remember_at) {
     })
 }
 
+function sendMessageUnknown(sender_psid) {
+    const requestBody = {
+        'recipient': {
+            'id': sender_psid
+        },
+        'message': {'text': `I'm sorry, I couldn't undertand your message`},
+        'messaging_type': 'RESPONSE',
+    }
+    request({
+        'url': 'https://graph.facebook.com/v15.0/me/messages',
+        'qs': {'access_token': PAGE_ACCESS_TOKEN},
+        'method': 'POST',
+        'json': requestBody
+    }, (err, res, body) => {
+    })
+}
+
 module.exports = {
-    'createMemory': createMemory
+    'createMemory': createMemory,
+    'sendMessage': sendMessage
 }
