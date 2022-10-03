@@ -77,8 +77,7 @@ function sendMemories() {
         url: 'https://recuerdame-api.herokuapp.com/cron',
         method: 'GET',
         headers: { }
-    })
-    .then(function (response) {
+    }, (err,response,body) => {
         if(JSON.stringify(response.data) == '"No pending memories found"'){
             // Nothing
         } else {
@@ -110,13 +109,6 @@ function sendMemories() {
             }
         }
     })
-    .catch(function (error) {
-      console.log(error)
-    })
-
-
-
-
 }
 
 module.exports = {
