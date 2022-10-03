@@ -36,7 +36,7 @@ router.post('/webhook', (req,res) => {
             const sender_psid = webhookEvent.sender.id
 
             // If it contains remember , rememberme or remember me
-            if (/remember/i.test(msgTxt) || /rememberme/i.test(msgTxt) || /remember me/i.test(msgTxt)){
+            if (/remember/i.test(msgTxt) || /rememberme/i.test(msgTxt) || /remember me/i.test(msgTxt) || /remind me/i.test(msgTxt) || /remindme/i.test(msgTxt)){
                 console.log('Memory detected')
 
                 let txt_memory
@@ -44,14 +44,20 @@ router.post('/webhook', (req,res) => {
                 let remember_at_index
 
                 // Find the position of text to memorize
-                if(/remember me/i.test(msgTxt)){
+                if(/rememberme/i.test(msgTxt)){
+                    remember_at_index = msgTxt.indexOf('rememberme')
+                }
+                else if (/remember me/i.test(msgTxt)){
                     remember_at_index = msgTxt.indexOf('remember me')
                 }
                 else if (/remember/i.test(msgTxt)){
                     remember_at_index = msgTxt.indexOf('remember')
                 }
-                else if (/rememberme/i.test(msgTxt)){
-                    remember_at_index = msgTxt.indexOf('rememberme')
+                else if (/remindme/i.test(msgTxt)){
+                    remember_at_index = msgTxt.indexOf('remindme')
+                }
+                else if (/remind me/i.test(msgTxt)){
+                    remember_at_index = msgTxt.indexOf('remind me')
                 }
 
                 let date_today = new Date()
