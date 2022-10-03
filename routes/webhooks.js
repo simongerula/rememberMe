@@ -225,7 +225,7 @@ Groceries remind me tuesday,`)
 
             // Unknown message
             else {
-                querys.sendMessageUnknown(sender_psid, `I'm sorry, I couldn't undertand your message`)
+                querys.sendCustomMessage(sender_psid, `I'm sorry, I couldn't undertand your message`)
             }
         })
         res.send('ok')
