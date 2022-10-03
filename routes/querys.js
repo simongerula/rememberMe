@@ -73,12 +73,12 @@ function sendCustomMessage(sender_psid, txt_message) {
 function sendMemories() {
     
     request({
-        url: 'https://recuerdame-api.herokuapp.com/cron',
+        url: 'https://remember-me-api.herokuapp.com/cron',
         method: 'GET',
         headers: { }
     }, (err,response,body) => {
-        console.log(JSON.stringify(response.body))
-        if(JSON.stringify(response.body) == '"No pending memories found"'){
+        console.log(JSON.stringify(response))
+        if(JSON.stringify(response) == '"No pending memories found"'){
             // Nothing
         } else {
             let memories = response 
