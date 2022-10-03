@@ -3,9 +3,9 @@ const querys = require('./routes/querys')
 
 
 function runCron() {
-    console.log('Cron Activado')
+    console.log('[Log 3/3] Cron running')
     cron.schedule('* * * * *', ()=>{
-        peticiones.enviarRecordatorios()
+        querys.sendMemories()
     })
 }
 

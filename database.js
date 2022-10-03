@@ -16,7 +16,6 @@ mysqlConnection.connect(function(err){
     } else {
         console.log('[Log 2/3] Database connected')
         cron.runCron()
-        console.log('[Log 3/3] Cron running')
     }
 })
 
