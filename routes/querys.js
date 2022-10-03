@@ -6,8 +6,8 @@ function createMemory(sender_psid, txt_memory, remember_at) {
     
     const requestBody = {
         'sender_psid': sender_psid,
-        'message': txt_memory,
-        'date_to_remember': remember_at,
+        'txt_memory': txt_memory,
+        'remember_at': remember_at,
         'status': 'Pending'
     }
     request({
@@ -20,8 +20,10 @@ function createMemory(sender_psid, txt_memory, remember_at) {
     }, (err, res, body) => {
         if(!err){
             sendMessageConfirmation(sender_psid, txt_memory, remember_at)
+            console.log('Sender id ', sender_psid)
+            console.log('fecha ', remember_at)
         } else {
-            console.error('fallo createMemory')
+            sendCustomMessage(sender_psid, "I'm sorry, I couldn't save your memory")
         }
     })
 

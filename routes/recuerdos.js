@@ -125,7 +125,15 @@ router.delete('/recuerdos/:id', (req,res) => {
 })
 
 router.post('/memories', (req, res) => {
-    res.send('hi')
+    const {sender_psid, txt_memory, remember_at} = req.body
+    mysqlConnection.query('INSERT INTO memories (sender_psid, txt_memory, remember_at, status) VALUES(?, ?, ?, "Pending")', [sender_psid, txt_memory, remember_at], (err) =>{
+        if(!err){
+            res.json("Memory created successfully")
+        } else {
+            res.json('Failed to create memory')
+            console.log(err)
+        }
+    })
 })
 
 module.exports = router
