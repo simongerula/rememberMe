@@ -160,7 +160,7 @@ router.get('/cron', async (req,res) =>{
             console.log(err)
         }
     })
-    await sleep(2000)
+    /*await sleep(2000)
     function sleep(ms) {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);
@@ -170,7 +170,7 @@ router.get('/cron', async (req,res) =>{
         console.log(rowsT[i].id)
         mysqlConnection.query('UPDATE memories SET status = "Processed" where id = ?', [rowsT[i].id], (err, rows, fields) => {
         })                
-    }
+    }*/
 })
 
 module.exports = router
