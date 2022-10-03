@@ -145,7 +145,6 @@ router.get('/cron', async (req,res) =>{
     let date_today = new Date().toLocaleString("en-US", {timeZone: 'Pacific/Auckland'})
     date_today = new Date(date_today)
     const current_date = date_today.getFullYear() + "-" + (date_today.getMonth()+1) + "-" + date_today.getDate() + " " + date_today.getHours() + ":" + date_today.getMinutes() + ":" + date_today.getSeconds()
-    console.log(current_date)
 
     mysqlConnection.query('SELECT * FROM memories WHERE status = "Pending" AND remember_at <= ?', [current_date], (err, rows, fields) => {
         if(!err){

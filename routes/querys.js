@@ -77,11 +77,10 @@ function sendMemories() {
         method: 'GET',
         headers: { }
     }, (err,response,body) => {
-        console.log(response)
+        console.log(response.IncomingMessage)
         if(JSON.stringify(response) == '"No pending memories found"'){
             // Nothing
         } else {
-            console.log(reponse.body)
             let memories = response 
             for(const i in memories){
                 /*if(memories[i].reply_msg == 0){*/
