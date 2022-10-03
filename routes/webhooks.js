@@ -61,6 +61,7 @@ router.post('/webhook', (req,res) => {
                 }
 
                 let date_today = new Date().toLocaleString("en-US", {timeZone: 'Pacific/Auckland'})
+                date_today = new Date(date_today)
 
                 txt_memory = msgTxt.slice(0,remember_at_index)
                 remember_at = msgTxt.slice(remember_at_index+8) // repasar
