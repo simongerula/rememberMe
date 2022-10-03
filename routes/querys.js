@@ -80,7 +80,7 @@ function sendMemories() {
         if(JSON.stringify(response.body) == '"No pending memories found"'){
             // Nothing
         } else {
-            console.log(memories)
+            console.log(reponse.body)
             let memories = response.body 
             for(const i in memories){
                 /*if(memories[i].reply_msg == 0){*/
