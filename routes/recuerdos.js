@@ -7,7 +7,7 @@ router.get('/', (req,res) =>{
     res.send("Welcome to Recuerdame API")
 })
 
-router.get('/recuerdos', (req,res) =>{
+router.get('/memories', (req,res) =>{
     mysqlConnection.query('SELECT * FROM recuerdos', (err, rows, fields) => {
         if(!err){
             res.json(rows)
@@ -17,13 +17,13 @@ router.get('/recuerdos', (req,res) =>{
     })
 })
 
-router.get('/recuerdos/:id', (req,res) => {
+router.get('/memories/:id', (req,res) => {
     const { id } = req.params
     mysqlConnection.query('SELECT * FROM recuerdos WHERE id = ?', [id], (err, rows, fields) => {
         if(!err){
             res.json(rows[0])
         } else {
-            res.json('No se encontro el recuerdo')
+            res.json('Memory not found')
             console.log(err)
         }
     })

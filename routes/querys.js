@@ -7,7 +7,8 @@ function createMemory(sender_psid, txt_memory, remember_at) {
     const requestBody = {
         'sender_psid': sender_psid,
         'message': txt_memory,
-        'date_to_remember': remember_at
+        'date_to_remember': remember_at,
+        'status': 'Pending'
     }
     request({
         'url': 'https://remember-me-api.herokuapp.com/memories',
