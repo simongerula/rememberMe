@@ -199,8 +199,8 @@ router.post('/webhook', (req,res) => {
                 // minutes detailed
                 else if(!/:/.test(remember_at) && !/\//.test(remember_at) && !/tomorrow/.test(remember_at) && (!/monday/.test(remember_at) || !/tuesday/.test(remember_at) || !/wednesday/.test(remember_at) || !/thursday/.test(remember_at) || !/friday/.test(remember_at) || !/saturday/.test(remember_at) || !/sunday/.test(remember_at)) && /minute/.test(remember_at)){
                     const minutes_quantity = remember_at.slice(remember_at.indexOf('minute')-3, remember_at.indexOf('minute')-1)
-                    const remember_at_minutes = date_today.getDate(date_today.setminutes(date_today.getminutes()+parseInt(minutes_quantity)))
-                    remember_at = date_today.getFullYear() + "-" + (date_today.getMonth()+1) + "-" + date_today.getDate() + " " + date_today.getHours() + ":" + date_today.getminutes() + ":00"
+                    const remember_at_minutes = date_today.getDate(date_today.setminutes(date_today.getMinutes()+parseInt(minutes_quantity)))
+                    remember_at = date_today.getFullYear() + "-" + (date_today.getMonth()+1) + "-" + date_today.getDate() + " " + date_today.getHours() + ":" + date_today.getMinutes() + ":00"
 
                     querys.createMemory(sender_psid, txt_memory, remember_at)
                 }
