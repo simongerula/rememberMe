@@ -146,7 +146,7 @@ router.get('/cron', async (req,res) =>{
     date_today = new Date(date_today)
     const current_date = date_today.getFullYear() + "-" + (date_today.getMonth()+1) + "-" + date_today.getDate() + " " + date_today.getHours() + ":" + date_today.getMinutes() + ":" + date_today.getSeconds()
 
-    mysqlConnection.query('SELECT * FROM memories WHERE status = "Pending" AND remember_at <= ?', [current_date], (err, rows, fields) => {
+    mysqlConnection.query('SELECT * FROM memories WHERE status = "Pending" AND remember_at <= "?"', [current_date], (err, rows, fields) => {
         if(!err){
             if(rows == ""){
                 res.json("No pending memories found")
