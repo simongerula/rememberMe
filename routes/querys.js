@@ -78,10 +78,10 @@ function sendMemories() {
         headers: { }
     }, (err,response,body) => {
         console.log(JSON.stringify(response))
-        if(JSON.stringify(response) == '"No pending memories found"'){
+        if(JSON.stringify(response.body) == '"No pending memories found"'){
             // Nothing
         } else {
-            let memories = response 
+            let memories = response.body
             for(const i in memories){
                 /*if(memories[i].reply_msg == 0){*/
                 sendCustomMessage(memories[i].sender_psid, `Hi! Don't forget to: ${memories[i].txt_memory}`)
