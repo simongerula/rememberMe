@@ -50,12 +50,12 @@ function sendMessageConfirmation(sender_psid, txt_memory, remember_at) {
     })
 }
 
-function sendMessageUnknown(sender_psid) {
+function sendCustomMessage(sender_psid, txt_message) {
     const requestBody = {
         'recipient': {
             'id': sender_psid
         },
-        'message': {'text': `I'm sorry, I couldn't undertand your message`},
+        'message': {'text': txt_message},
         'messaging_type': 'RESPONSE',
     }
     request({
@@ -69,5 +69,5 @@ function sendMessageUnknown(sender_psid) {
 
 module.exports = {
     'createMemory': createMemory,
-    'sendMessageUnknown': sendMessageUnknown
+    'sendCustomMessage': sendCustomMessage
 }
