@@ -124,6 +124,9 @@ router.delete('/recuerdos/:id', (req,res) => {
 
 })
 
+
+/* ------------------------------------------------------------------------------------- */
+
 router.post('/memories', (req, res) => {
     const {sender_psid, txt_memory, remember_at} = req.body
     mysqlConnection.query('INSERT INTO memories (sender_psid, txt_memory, remember_at, status) VALUES(?, ?, ?, "Pending")', [sender_psid, txt_memory, remember_at], (err) =>{
@@ -134,6 +137,39 @@ router.post('/memories', (req, res) => {
             console.log(err)
         }
     })
+})
+
+router.get('/cron', async (req,res) =>{
+    let rowsT
+    //const fecha_hoy = new Date()
+    let date_today = new Date().toLocaleString("en-US", {timeZone: 'Pacific/Auckland'})
+    date_today = new Date(date_today)
+    const current_date = date_today.getFullYear() + "-" + (date_today.getMonth()+1) + "-" + date_today.getDate() + " " + date_today.getHours() + ":" + date_today.getMinutes() + ":" + date_today.getSeconds()
+
+    mysqlConnection.query('SELECT * FROM memories WHERE status = "Pending" AND remember_at <= ?', [current_date], (err, rows, fields) => {
+        if(!err){
+            if(rows == ""){
+                res.json("No pending memories found")
+            } else {
+                res.json(rows)
+            }
+            rowsT = rows
+        } else {
+            res.json('Failed to retrieve memories for cron')
+            console.log(err)
+        }
+    })
+    await sleep(2000)
+    function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+    }  
+    for(const i in rowsT){
+        console.log(rowsT[i].id)
+        mysqlConnection.query('UPDATE memories SET status = "Processed" where id = ?', [rowsT[i].id], (err, rows, fields) => {
+        })                
+    }
 })
 
 module.exports = router

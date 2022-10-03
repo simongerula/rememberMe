@@ -1,4 +1,5 @@
 const mysql = require('mysql')
+const cron = require('./cron')
 
 // https://www.freemysqlhosting.net/
 const mysqlConnection = mysql.createConnection({
@@ -13,7 +14,9 @@ mysqlConnection.connect(function(err){
         console.log(err)
         return
     } else {
-        console.log('[Log 2/2] Base de datos conectada')
+        console.log('[Log 2/3] Database connected')
+        cron.runCron()
+        console.log('[Log 3/3] Cron running')
     }
 })
 

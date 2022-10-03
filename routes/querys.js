@@ -70,7 +70,54 @@ function sendCustomMessage(sender_psid, txt_message) {
     })
 }
 
+function sendMemories() {
+    
+    request({
+        url: 'https://recuerdame-api.herokuapp.com/cron',
+        method: 'GET',
+        headers: { }
+    })
+    .then(function (response) {
+        if(JSON.stringify(response.data) == '"No pending memories found"'){
+            // Nothing
+        } else {
+            let memories = response.data 
+            for(const i in memories){
+                /*if(memories[i].reply_msg == 0){*/
+                sendCustomMessage(memories[i].sender_psid, `Hi! Don't forget to: ${memories[i].txt_memory}`)
+                    //cliente.sendMessage(recuerdos[i].num_usuario,`Hola! No te olvides de:  ${recuerdos[i].txt_recuerdo}`)
+                /*} else if(recuerdos[i].reply_msg == 1){
+                    msg_id = (JSON.parse(recuerdos[i].msg_id))
+                    //////////////// <-------------------->
+                    msgObject.mediaKey = msg_id.mediaKey
+                    msgObject.id = msg_id.id
+                    msgObject.body = msg_id.body
+                    msgObject.timestamp = msg_id.timestamp
+                    msgObject.from = msg_id.from
+                    msgObject.to = msg_id.to
+                    msgObject.from = msg_id.from
+                    //////////////// <-------------------->
+                    msgObject.reply(`Hola! No te olvides de: ${recuerdos[i].txt_recuerdo}`)
+                }*/
+                let current_date = new Date().toLocaleString("en-US", {timeZone: 'Pacific/Auckland'})
+                current_date = new Date(current_date)
+
+                let cron_date = current_date.getFullYear() + "-" + (current_date.getMonth()+1) + "-" + current_date.getDate() + " " + current_date.getHours() + ":" + current_date.getMinutes() + ":" + current_date.getSeconds()
+                console.log('Ultimo recuerdo enviado ' + cron_date)
+            }
+        }
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+
+
+
+
+}
+
 module.exports = {
     'createMemory': createMemory,
-    'sendCustomMessage': sendCustomMessage
+    'sendCustomMessage': sendCustomMessage,
+    'sendMemories': sendMemories
 }
