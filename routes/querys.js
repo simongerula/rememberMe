@@ -79,8 +79,8 @@ function sendMemories() {
     }, (err,response,body) => {
 
         console.log(response.body)
-        console.log(response.body == "No pending memories found")
-        
+        console.log(response.body == '"No pending memories found"')
+
         if(response.body == "No pending memories found"){
             // Nothing
             console.log('nothing')
