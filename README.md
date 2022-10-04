@@ -10,7 +10,7 @@ You receive a greeting and the suggestion to type help to see available commands
 #### Help
 You receive examples of how to execute a command to save a memory
 
-
+***
 
 ### Reminder combinations available:
 
