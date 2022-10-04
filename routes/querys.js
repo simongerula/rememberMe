@@ -77,8 +77,10 @@ function sendMemories() {
         method: 'GET',
         headers: { }
     }, (err,response,body) => {
-        console.log(JSON.stringify(response.body))
-        if(JSON.stringify(response.body) == "'No pending memories found'"){
+        console.log('uno ', JSON.stringify(response.body))
+        console.log('dos ', JSON.stringify(response.body))
+
+        if(response.body == "'No pending memories found'"){
             // Nothing
             console.log('nothing')
         } else {
