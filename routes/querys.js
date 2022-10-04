@@ -82,7 +82,7 @@ function sendMemories() {
             // Nothing
             console.log('nothing')
         } else {
-            let memories = JSON.stringify(response.body)
+            let memories = response.body
             for(const i in memories){
                 /*if(memories[i].reply_msg == 0){*/
                 sendCustomMessage(memories[i].sender_psid, `Hi! Don't forget to: ${memories[i].txt_memory}`)
