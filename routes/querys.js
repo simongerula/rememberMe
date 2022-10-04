@@ -78,12 +78,8 @@ function sendMemories() {
         headers: { }
     }, (err,response,body) => {
 
-        console.log(response.body)
-        console.log(response.body == '"No pending memories found"')
-
-        if(response.body == "No pending memories found"){
+        if(response.body == '"No pending memories found"'){
             // Nothing
-            console.log('nothing')
         } else {
             let memories = response.body
             for(const i in memories){
