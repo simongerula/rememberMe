@@ -221,7 +221,7 @@ Turn off the oven remind me in 5 minutes,
 Go to the doctor remind me at 18,
 Uncle's birthday remind me of 01/01/22,
 Recyclable trash remind me tomorrow,
-Groceries remind me tuesday,`)
+Groceries remind me tuesday`)
             }
 
             // Unknown message
