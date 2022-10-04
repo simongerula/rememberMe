@@ -4,11 +4,13 @@
 
 ### Commands recognized by the bot:
 
-### Hi
+#### Hi
 You receive a greeting and the suggestion to type help to see available commands
 
-### Help
+#### Help
 You receive examples of how to execute a command to save a memory
+
+
 
 ### Reminder combinations available:
 
