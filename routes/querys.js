@@ -78,7 +78,7 @@ function sendMemories() {
         headers: { }
     }, (err,response,body) => {
         console.log(JSON.stringify(response.body))
-        if(JSON.stringify(response.body) == 'No pending memories found'){
+        if(JSON.stringify(response.body) == "'No pending memories found'"){
             // Nothing
         } else {
             let memories = JSON.stringify(response.body)
