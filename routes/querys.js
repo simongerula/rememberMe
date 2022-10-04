@@ -81,7 +81,7 @@ function sendMemories() {
         if(response.body == '"No pending memories found"'){
             // Nothing
         } else {
-            let memories = response.body
+            let memories = JSON.stringify(response.body)
             for(let i in memories){
                 /*if(memories[i].reply_msg == 0){*/
                 console.log('aca... ', memories[i])
