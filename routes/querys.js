@@ -83,7 +83,8 @@ function sendMemories() {
         } else {
             let memories = response.body
             console.log('length ', memories.length)
-            console.log('cero ', memories[0])
+            console.log('cero ', memories)
+            console.log('no se', memories.sender_psid)
             for(let i in memories){
                 /*if(memories[i].reply_msg == 0){*/
                 sendCustomMessage(memories[i].sender_psid, `Hi! Don't forget to: ${memories[i].txt_memory}`)
