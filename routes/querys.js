@@ -83,7 +83,7 @@ function sendMemories() {
         } else {
             let memories = response.body
             console.log('memories ', memories)
-            for(const i in memories){
+            for(let i in memories){
                 /*if(memories[i].reply_msg == 0){*/
                 sendCustomMessage(memories[i].sender_psid, `Hi! Don't forget to: ${memories[i].txt_memory}`)
                     //cliente.sendMessage(recuerdos[i].num_usuario,`Hola! No te olvides de:  ${recuerdos[i].txt_recuerdo}`)
