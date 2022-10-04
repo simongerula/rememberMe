@@ -3,7 +3,7 @@ const router = express.Router()
 
 const request = require('request')
 
-const querys = require('./querys')
+const querys = require('../src/querys')
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
@@ -209,7 +209,7 @@ router.post('/webhook', (req,res) => {
 
             // Hi
             else if(/hi/i.test(msgTxt)){
-                querys.sendCustomMessage(sender_psid, 'Hi! Welcome to RememberMe Bot')
+                querys.sendCustomMessage(sender_psid, 'Hi! Welcome to RemindMe Bot')
                 querys.sendCustomMessage(sender_psid, 'To see the options you can write me help')
             } 
 

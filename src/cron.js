@@ -1,5 +1,5 @@
 const cron = require('node-cron')
-const querys = require('./routes/querys')
+const querys = require('./querys')
 
 
 function runCron() {
