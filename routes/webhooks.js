@@ -210,18 +210,22 @@ router.post('/webhook', (req,res) => {
             // Hi
             else if(/hi/i.test(msgTxt)){
                 querys.sendCustomMessage(sender_psid, 'Hi! Welcome to RemindMe Bot')
-                querys.sendCustomMessage(sender_psid, 'To see the options you can write me help')
+                querys.sendCustomMessage(sender_psid, 'To know how I can help you write me: help')
             } 
 
             // Help
             else if (/help/i.test(msgTxt)){
-                querys.sendCustomMessage(sender_psid, `I show you examples of how you can save a memory:
+                querys.sendCustomMessage(sender_psid, `You can save memories in the following way:
 Memory + remind me + when
 Turn off the oven remind me in 5 minutes,
-Go to the doctor remind me at 18,
-Uncle's birthday remind me of 01/01/22,
+Go to the doctor remind me at 18:00 [HH:MM],
+Uncle's birthday remind me on 01/01/22 [DD/MM/YY],
 Recyclable trash remind me tomorrow,
 Groceries remind me tuesday`)
+
+                querys.sendCustomMessage(sender_psid, `You can also combine dates, days and times
+Santa Claus arrives remind me on 24/12/22 23:59,
+After office remind me on Friday at 19:00`)
             }
 
             // Unknown message
