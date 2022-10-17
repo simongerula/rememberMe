@@ -236,6 +236,13 @@ After office remind me on Friday at 19:00`)
         res.send('ok')
         console.log('Evento Recibido')
     }
+
+
+    // porque no llegan de otros usuarios
+    else {
+        console.log('distinto a page')
+        console.log(body.object)
+    }
 })
 
 module.exports = router
