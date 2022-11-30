@@ -230,18 +230,11 @@ After office remind me on Friday at 19:00`)
 
             // Unknown message
             else {
-                querys.sendCustomMessage(sender_psid, `I'm sorry, I couldn't undertand your message`)
+                querys.sendCustomMessage(sender_psid, `I'm sorry, I couldn't understand your message`)
             }
         })
         res.send('ok')
         console.log('Evento Recibido')
-    }
-
-
-    // porque no llegan de otros usuarios
-    else {
-        console.log('distinto a page')
-        console.log(body.object)
     }
 })
 
