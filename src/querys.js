@@ -55,6 +55,7 @@ function sendMessageConfirmation(sender_psid, txt_memory, remember_at) {
 
 function sendCustomMessage(sender_psid, txt_message) {
     const requestBody = {
+        "field": "messages",
         'recipient': {
             'id': sender_psid
         },
