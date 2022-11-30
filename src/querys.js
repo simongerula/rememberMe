@@ -68,6 +68,7 @@ function sendCustomMessage(sender_psid, txt_message) {
         'method': 'POST',
         'json': requestBody
     }, (err, res, body) => {
+        console.log(err)
     })
 }
 
