@@ -235,6 +235,7 @@ After office remind me on Friday at 19:00`)
         })
         res.send('ok')
         console.log('Evento Recibido')
+        console.log(body)
     }
 })
 
