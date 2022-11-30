@@ -54,6 +54,7 @@ function sendMessageConfirmation(sender_psid, txt_memory, remember_at) {
 }
 
 function sendCustomMessage(sender_psid, txt_message) {
+    console.log("I'm in sendCustomMessage")
     const requestBody = {
         'recipient': {
             'id': sender_psid
