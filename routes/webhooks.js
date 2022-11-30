@@ -27,11 +27,13 @@ router.get('/webhook', (req,res) =>{
 // Reading messages
 router.post('/webhook', (req,res) => {
     const body = req.body
+    let msgTxt
     if(body.object === 'page'){
         body.entry.forEach(entry => {
             const webhookEvent = entry.messaging[0]
 
-            const msgTxt = webhookEvent.message.text
+            //const msgTxt = webhookEvent.message.text
+            msgTxt = webhookEvent.message.text
             const sender_psid = webhookEvent.sender.id
 
             // If it contains remember , rememberme or remember me
