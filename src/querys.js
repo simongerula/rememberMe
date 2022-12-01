@@ -54,7 +54,6 @@ function sendMessageConfirmation(sender_psid, txt_memory, remember_at) {
 }
 
 function sendCustomMessage(sender_psid, txt_message) {
-    console.log('token :', PAGE_ACCESS_TOKEN)
     const requestBody = {
         'recipient': {
             'id': sender_psid
@@ -84,8 +83,8 @@ function sendMemories() {
         } else {
             let memories = JSON.parse(response.body)
             for(let i in memories){
+                console.log(memories)
                 /*if(memories[i].reply_msg == 0){*/
-                console.log('aca... ', memories[i])
                 sendCustomMessage(memories[i].sender_psid, `Hi! Don't forget to: ${memories[i].txt_memory}`)
                     //cliente.sendMessage(recuerdos[i].num_usuario,`Hola! No te olvides de:  ${recuerdos[i].txt_recuerdo}`)
                 /*} else if(recuerdos[i].reply_msg == 1){
