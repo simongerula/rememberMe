@@ -11,7 +11,7 @@ function createMemory(sender_psid, txt_memory, remember_at) {
         'status': 'Pending'
     }
     request({
-        'url': 'https://remember-me-api.herokuapp.com/memories',
+        'url': 'https://remind-me-2utq.onrender.com/memories',
         'method': 'POST',
         'headers': { 
             'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ function sendCustomMessage(sender_psid, txt_message) {
 function sendMemories() {
     
     request({
-        url: 'https://remember-me-api.herokuapp.com/cron',
+        url: 'https://remind-me-2utq.onrender.com/cron',
         method: 'GET',
         headers: { }
     }, (err,response,body) => {
