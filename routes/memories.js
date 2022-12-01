@@ -102,7 +102,7 @@ router.get('/cron', async (req,res) =>{
             console.log(err)
         }
     })
-    await sleep(4000)
+    await sleep(2000)
     function sleep(ms) {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);
