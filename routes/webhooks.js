@@ -34,6 +34,7 @@ router.post('/webhook', (req,res) => {
 
             //const msgTxt = webhookEvent.message.text
             msgTxt = webhookEvent.message.text
+            console.log('-->>> msgTxt: ', msgTxt)
             const sender_psid = webhookEvent.sender.id
 
             // If it contains remember , rememberme or remember me
